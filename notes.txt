@@ -1,0 +1,9 @@
+#Push Swap notes based on Radix Sort
+
+1. find the number with the largest digit
+2. based off of that add padding to numbers to mathc the digit length
+3. Then bucket based on digit from left to right
+
+#With two stacks
+1. Pb every number based on zero
+2.
