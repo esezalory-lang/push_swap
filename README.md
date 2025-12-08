@@ -52,5 +52,5 @@ Throughout this project I used a variety of resources ranging from Google's Note
 I also used a book entitled ***"Algorithms in C"** by Robert Sedgewick* which can be found in this [link](https://theswissbay.ch/pdf/Gentoomen%20Library/Algorithms/Algorithms%20in%20C.pdf), to inform me on the various algorithms out in the world, to learn a bit more on linked lists, to understand bitwise operations, and finally to understand the **RADIX Sort (LSD/Straight Sort)** which I used for this project.
 
 You can also follow the logic of my code through my Obsidian diagram below:
-<img width="2060" height="2360" alt="Push_Swap Diagram" src="https://github.com/user-attachments/assets/0cdd0d38-b5e0-4a14-9273-b7c5d4f31f32" />
+<img width="2060" height="2360" alt="Push_Swap Diagram" src="https://github.com/user-attachments/assets/24a34d45-06d5-4b5d-9898-609bab4a7ea9" />
 
