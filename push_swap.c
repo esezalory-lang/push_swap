@@ -6,43 +6,57 @@
 /*   By: esezalor <esezalor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:57:55 by esezalor          #+#    #+#             */
-/*   Updated: 2025/12/04 14:01:28 by esezalor         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:19:07 by esezalor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error_handling.c"
-#include "libft_utils.c"
-#include "list_utils.c"
-#include "mini_sort.c"
-#include "moves.c"
+// #include "error_handling.c"
+// #include "utils.c"
+// #include "list_utils.c"
+// #include "mini_sort.c"
+// #include "moves_a.c"
+// #include "moves_b.c"
+// #include "radix_sort.c"
 #include "push_swap.h"
-#include "sort_utils.c"
 
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
+	int		list_size;
 
-	if (argc <= 1)
-		return (write(2, "Error: Not Enough Arguments\n", 29), -1);
-	if (argc == 2)
+	if (error_line_saver(argc, argv) == -1)
+		return (write(2, "Error\n", 6), -1);
+	if (error_line_saver(argc, argv) == 0)
 		return (0);
-	if (error_parsing(argc, argv) == 0)
-		return (write(2, "Error: Invalid List\n", 21), -1);
 	stack_a.head = NULL;
 	stack_a.tail = NULL;
+	stack_b.head = NULL;
+	stack_b.tail = NULL;
 	if (argc > 2)
 	{
 		if (create_list(&stack_a, argv) == 0)
 			return (write(2, "Error: Allocation Failure\n", 27), -1);
 	}
-	if (ft_lstsize(stack_a.head) <= 5)
+	list_size = ft_lstsize(stack_a.head);
+	if (list_size <= 5)
 		mini_sort_parser(&stack_a, &stack_b);
 	else
-		virtualsort(&stack_a, argc);
-	// 	radix_parser(&stack_a, &stack_b);
-	debug_print_list(stack_a);
-	return (0);
+		radix_parser(&stack_a, &stack_b, list_size, argc);
+	return (ft_lstclear(&stack_a.head), ft_lstclear(&stack_b.head), 0);
+}
+
+int	error_line_saver(int argc, char **argv)
+{
+	if (argc <= 1)
+		return (0);
+	if (argc == 2)
+		return (0);
+	if (error_parsing(argc, argv) == 0)
+		return (-1);
+	if (error_parsing(argc, argv) == 2)
+		return (0);
+	return (1);
 }
 
 int	create_list(t_stack *stack_a, char **argv)
@@ -72,61 +86,4 @@ int	create_list(t_stack *stack_a, char **argv)
 		i++;
 	}
 	return (1);
-}
-
-void	virtualsort(t_stack *stack_a, int args)
-{
-	int		min_value;
-	int		index;
-	t_list	*current;
-	t_list	*lst_min_location;
-
-	index = 0;
-	while (index < args - 1)
-	{
-		current = stack_a->head;
-		lst_min_location = NULL;
-		while (current)
-		{
-			if ((lst_min_location == NULL || current->list_number < min_value)
-				&& current->list_position == -1)
-			{
-				min_value = current->list_number;
-				lst_min_location = current;
-			}
-			current = current->next;
-		}
-		if (lst_min_location == NULL)
-			break ;
-		lst_min_location->list_position = index;
-		index++;
-	}
-}
-
-#include <stdio.h>
-
-void	debug_print_list(t_stack stack)
-{
-	t_list	*current;
-
-	current = stack.head;
-	printf("\n====== STACK VISUALIZATION ======\n");
-	printf("Stack Metadata:\n");
-	printf("  HEAD: %p\n", (void *)stack.head);
-	printf("  TAIL: %p\n", (void *)stack.tail);
-	printf("---------------------------------\n");
-	if (!current)
-		printf("  [ Stack is EMPTY ]\n");
-	while (current)
-	{
-		printf("Node [%p]\n", (void *)current);
-		printf("  | Value (list_number):   %d\n", current->list_number);
-		// Assuming list_position is initialized. If not, this might print garbage.
-		printf("  | Rank  (list_position): %d\n",
-			current->list_position);
-		printf("  | Next:                  %p\n", (void *)current->next);
-		printf("  -----------------------\n");
-		current = current->next;
-	}
-	printf("====== END OF STACK ======\n\n");
 }

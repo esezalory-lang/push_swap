@@ -6,13 +6,11 @@
 /*   By: esezalor <esezalor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:42:44 by esezalor          #+#    #+#             */
-/*   Updated: 2025/12/01 18:39:08 by esezalor         ###   ########.fr       */
+/*   Updated: 2025/12/08 16:58:07 by esezalor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// #include "libft_utils.c"
 
 int	error_parsing(int argc, char **argv)
 {
@@ -24,7 +22,7 @@ int	error_parsing(int argc, char **argv)
 	if (!error_array)
 		return (0);
 	if (valid_int(argv) == 0)
-		return (0);
+		return (free(error_array), 0);
 	while (i < argc)
 	{
 		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
@@ -33,9 +31,9 @@ int	error_parsing(int argc, char **argv)
 		i++;
 	}
 	if (check_dup(argc, error_array) == 0)
-		return (0);
+		return (free(error_array), 0);
 	if (check_sorted(argc, error_array) == 0)
-		return (0);
+		return (free(error_array), 2);
 	return (free(error_array), 1);
 }
 
@@ -49,6 +47,8 @@ int	valid_int(char **nptr)
 	while (nptr[i])
 	{
 		j = 0;
+		if (nptr[i][0] == '\0')
+			return (0);
 		if (nptr[i][j] == '-' || nptr[i][j] == '+')
 		{
 			j++;

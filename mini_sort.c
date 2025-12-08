@@ -6,7 +6,7 @@
 /*   By: esezalor <esezalor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 16:17:32 by esezalor          #+#    #+#             */
-/*   Updated: 2025/12/04 13:03:03 by esezalor         ###   ########.fr       */
+/*   Updated: 2025/12/08 16:02:15 by esezalor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	mini_sort_parser(t_stack *stack_a, t_stack *stack_b)
 
 	if (!stack_a || !stack_a->head)
 		return ;
-	stack_b->head = NULL;
-	stack_b->tail = NULL;
 	size = ft_lstsize(stack_a->head);
 	if (size == 2)
 	{
@@ -57,7 +55,7 @@ void	sort_three(t_stack *stack_a)
 
 void	sort_four(t_stack *stack_a, t_stack *stack_b)
 {
-	minisort_helper(stack_a);
+	bring_min_to_top(stack_a);
 	pb(stack_a, stack_b);
 	sort_three(stack_a);
 	pa(stack_a, stack_b);
@@ -65,25 +63,9 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b)
 
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {
-	int	min_pos;
-
-	min_pos = ft_lstmin(stack_a->head);
-	if (min_pos == 2)
-		ra(stack_a);
-	else if (min_pos == 3)
-	{
-		ra(stack_a);
-		ra(stack_a);
-	}
-	else if (min_pos == 4)
-	{
-		rra(stack_a);
-		rra(stack_a);
-	}
-	else if (min_pos == 5)
-		rra(stack_a);
+	bring_min_to_top(stack_a);
 	pb(stack_a, stack_b);
-	minisort_helper(stack_a);
+	bring_min_to_top(stack_a);
 	pb(stack_a, stack_b);
 	sort_three(stack_a);
 	pa(stack_a, stack_b);
