@@ -26,7 +26,7 @@ int	error_parsing(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
-			return (0);
+			return (free(error_array), 0);
 		error_array[i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
