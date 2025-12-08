@@ -49,4 +49,7 @@ chmod +x ./checker_linux
 ## Resources
 Throughout this project I used a variety of resources ranging from Google's Notebook LM to help me breakdown the project itself as well as to better understand `structs` and `lists`, you can find this resource in the following link: [Push_Swap - Notebook LM](https://notebooklm.google.com/notebook/2b36d609-cfb1-41e2-a227-9e7b8ac56416)
 
-I also used the infamous book entitled ***"Algorithms in C"** by Robert Sedgewick* which can be found in this [link](https://theswissbay.ch/pdf/Gentoomen%20Library/Algorithms/Algorithms%20in%20C.pdf), to inform me on the various algorithms out in the world, to learn a bit more on linked lists, to understand bitwise operations, and finally to understand the **RADIX Sort (LSD/Straight Sort)** which I used for this project.
+I also used a book entitled ***"Algorithms in C"** by Robert Sedgewick* which can be found in this [link](https://theswissbay.ch/pdf/Gentoomen%20Library/Algorithms/Algorithms%20in%20C.pdf), to inform me on the various algorithms out in the world, to learn a bit more on linked lists, to understand bitwise operations, and finally to understand the **RADIX Sort (LSD/Straight Sort)** which I used for this project.
+
+You can also follow the logic of my code through my Obsidian diagram below:
+![Image](file:///home/esezalor/Downloads/Push_Swap%20Diagram.png)
