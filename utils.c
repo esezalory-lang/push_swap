@@ -21,8 +21,7 @@ long	ft_atoi(const char *nptr)
 	i = 0;
 	sign = 1;
 	new_nbr = 0;
-	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
+	
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
@@ -32,6 +31,8 @@ long	ft_atoi(const char *nptr)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		new_nbr = (new_nbr * 10) + (nptr[i] - 48);
+		if(new_nbr > INT_MAX || new_nbr < INT_MIN)
+			return(2147483648);
 		i++;
 	}
 	return (new_nbr * sign);
