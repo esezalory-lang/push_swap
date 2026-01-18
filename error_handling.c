@@ -45,7 +45,6 @@ int	valid_int(char **nptr)
 	int	j;
 
 	i = 1;
-	j = 0;
 	while (nptr[i])
 	{
 		j = 0;
